@@ -1,0 +1,487 @@
+{
+  _id: ObjectId('6ac37cb2765ff358c60b6d7a'),
+  CompanyId: ObjectId('6ab66127c3581d0f191dac27'),
+  UserId: ObjectId('6ab660bdc3581d0f191dac23'),
+  Status: 'published',
+  Location: {
+    Country: null,
+    City: null
+  },
+  Locations: [
+    {
+      Country: 'India',
+      City: 'Pune'
+    }
+  ],
+  JobPosition: 'Java developer',
+  IsValidationRequired: false,
+  JobPositions: [],
+  JobPositionLevel: 'middle',
+  JobCategory: null,
+  JobCategoryCode: [
+    NumberInt('40'),
+    NumberInt('38'),
+    NumberInt('37'),
+    NumberInt('16')
+  ],
+  JobId: '01',
+  JobName: 'Software Engineer / Senior Software Engineer – Java Backend',
+  EmploymentType: 'full',
+  WorkPlace: 'office',
+  RelocationPossibility: null,
+  DomainsRequired: [],
+  DomainsStopList: [],
+  Languages: [],
+  Description: '<p>We are looking for passionate Java Backend Engineers to build highly scalable, high-performance enterprise applications used by millions of users globally. The ideal candidate should have strong experience in Java, Microservices, React.js, Payment Gateway integrations, and Checkout platform development, with a product engineering mindset.</p>',
+  DescriptionPrompt: [
+    'Job Title: Software Engineer / Senior Software Engineer – Java BackendExperience: 5–10 YearsLocation: Pune (Baner) – Work from Office (5 Days a Week)About the Role :We are looking for passionate Java Backend Engineers to build highly scalable, high-performance enterprise applications used by millions of users globally. The ideal candidate should have strong experience in Java, Microservices, Payment Gateway integrations, and Checkout platform development, with a product engineering mindset.Candidates from FinTech, E-commerce, Payments, or Product-based companies will be preferred.Key Responsibilities :Design, develop, and maintain scalable backend applications using Java and Microservices.Build secure, high-performance REST APIs and distributed services.Develop and enhance Checkout platforms and Payment Gateway integrations for seamless payment processing.Collaborate with Product, Architecture, QA, and DevOps teams throughout the SDLC.Participate in system design, architecture discussions, and technical decision-making.Ensure high code quality through unit testing, code reviews, and engineering best practices.Build and support CI/CD pipelines and containerized deployments.Troubleshoot production issues, optimize performance, and improve application reliability.Mentor junior engineers and contribute to engineering excellence.Required Skills :5–10 years of backend development experience.Strong expertise in Java, Spring Boot, Spring MVC, Hibernate/JPA.Hands-on experience with Microservices Architecture.Experience building RESTful APIs.Strong knowledge of SQL/NoSQL databases.Experience with Payment Gateway Integration (Stripe, Adyen, Razorpay, Worldpay, PayU, Checkout.com, etc.).Hands-on experience developing Checkout and Payment Processing workflows.Understanding of Payment Lifecycle, including Authorization, Capture, Refunds, Settlement, Webhooks, and Transaction Management.Experience with Docker, Kubernetes, and containerized applications.Good understanding of CI/CD pipelines using Jenkins or similar tools.Familiarity with Git, Agile methodologies, and engineering best practices.Strong problem-solving and debugging skills.Preferred Skills :Experience working in FinTech, Payments, E-commerce, or Product-based organizations.Exposure to Cloud Platforms (GCP/AWS/Azure).Experience with Kafka or event-driven architecture.Knowledge of OAuth2, JWT, Keycloak, or similar authentication mechanisms.Experience with Monitoring & Observability tools (Grafana, Prometheus, ELK, Splunk).Performance tuning and scalability optimization experience.Preferred Background :Candidates from FinTech, Digital Payments, Banking Products, E-commerce, or Product Engineering companies.Experience working on high-volume transaction systems handling secure payment processing and checkout experiences.'
+  ],
+  Salary: {
+    AmountTo: NumberInt('3500000'),
+    Amount: NumberInt('2000000'),
+    Currency: 'INR',
+    Period: null
+  },
+  HardSkills: [
+    {
+      _id: ObjectId('647496be3aa920aa85c21c91'),
+      Name: 'API Development',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21830'),
+          Name: 'API',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('69d4d1fdd717f7ce742ffd0b'),
+          Name: 'Java',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c2183a'),
+          Name: 'REST API',
+          Experience: NumberInt('4'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21ca8'),
+      Name: 'Container & Kubernetes Management',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c218ec'),
+          Name: 'Docker',
+          Experience: NumberInt('4'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('3'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c218ee'),
+          Name: 'Kubernetes',
+          Experience: NumberInt('4'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('3'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c218f0'),
+          Name: 'Microservices',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cb3'),
+      Name: 'Database Management & Development',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21997'),
+          Name: 'SQL',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('669cde4c32a16e06a0630cf6'),
+          Name: 'NoSQL',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cbc'),
+      Name: 'Frameworks & Web Frameworks',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21a1d'),
+          Name: 'React.js',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c21a27'),
+          Name: 'Spring Boot',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c21a2c'),
+          Name: 'Spring MVC',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cf4'),
+      Name: 'Versioning & CI/CD',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21c60'),
+          Name: 'Git',
+          Experience: NumberInt('4'),
+          Years: NumberInt('0'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c21c67'),
+          Name: 'Jenkins',
+          Experience: NumberInt('4'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21c9e'),
+      Name: 'Cloud Computing',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21882'),
+          Name: 'AWS',
+          Experience: NumberInt('1'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('3'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c21883'),
+          Name: 'Azure',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('3'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cae'),
+      Name: 'Data & Network Security',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c2192d'),
+          Name: 'JWT',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cba'),
+      Name: 'Error Monitoring & Log Management',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c219e2'),
+          Name: 'ELK',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21ccf'),
+      Name: 'Messaging & Communication',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21ad1'),
+          Name: 'Kafka',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cd3'),
+      Name: 'Monitoring & Visualization',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21b10'),
+          Name: 'Grafana',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        },
+        {
+          _id: ObjectId('647496a53aa920aa85c21b15'),
+          Name: 'Prometheus',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cd9'),
+      Name: 'Persistence & Data Access',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21b7c'),
+          Name: 'Hibernate',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('647496be3aa920aa85c21cf2'),
+      Name: 'Third-Party Libraries',
+      Skills: [
+        {
+          _id: ObjectId('647496a53aa920aa85c21c4b'),
+          Name: 'Stripe',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('2'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('6a6226703099aaabc3b0a9e2'),
+      Name: 'Consulting',
+      Skills: [
+        {
+          _id: ObjectId('6a88596b065e9eca743f53c4'),
+          Name: 'Banking / Payment Gateway Integration',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('6a6226703099aaabc3b0a9e4'),
+      Name: 'IT & Information Security',
+      Skills: [
+        {
+          _id: ObjectId('6a62269f3099aaabc3b0aaed'),
+          Name: 'AWS / Azure / GCP',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    },
+    {
+      _id: ObjectId('6aa23c6e33be77be81068ff8'),
+      Name: 'Accounting',
+      Skills: [
+        {
+          _id: ObjectId('6aba194605f53c29e74deef4'),
+          Name: 'Payments',
+          Experience: NumberInt('3'),
+          Years: NumberInt('5'),
+          RequirementLevel: NumberInt('4'),
+          IsValidationRequired: false,
+          IsRequired: false
+        }
+      ]
+    }
+  ],
+  SoftSkills: null,
+  CreationSteps: {
+    StepItems: [
+      {
+        Key: 'jobPosition',
+        Path: 'job-position',
+        Label: 'Job position',
+        IsComplited: true
+      },
+      {
+        Key: 'hardSkills',
+        Path: 'hard-skills',
+        Label: 'Hard skills',
+        IsComplited: true
+      },
+      {
+        Key: 'additionalInfo',
+        Path: 'additional',
+        Label: 'Additional Info',
+        IsComplited: true
+      },
+      {
+        Key: 'uploadCvs',
+        Path: 'upload-cvs',
+        Label: 'Upload CVs',
+        IsComplited: true
+      },
+      {
+        Key: 'checkout',
+        Path: 'checkout',
+        Label: 'Complete job posting',
+        IsComplited: false
+      }
+    ],
+    CurrentStep: NumberInt('1'),
+    IsComplited: false
+  },
+  EducationDegree: null,
+  EducationField: null,
+  Responsibilities: '<p>Design, develop, and maintain scalable backend applications using Java and Microservices.</p><p>Build secure, high-performance REST APIs and distributed services.</p><p>Develop and enhance Checkout platforms and Payment Gateway integrations for seamless payment processing.</p><p>Collaborate with Product, Architecture, QA, and DevOps teams throughout the SDLC.</p><p>Participate in system design, architecture discussions, and technical decision-making.</p><p>Ensure high code quality through unit testing, code reviews, and engineering best practices.</p><p>Build and support CI/CD pipelines and containerized deployments.</p><p>Troubleshoot production issues, optimize performance, and improve application reliability.</p><p>Mentor junior engineers and contribute to engineering excellence.</p>',
+  RemoteDaysFromHome: null,
+  AppliedBy: [],
+  HiredBy: [],
+  RequestHireBy: [],
+  Created: ISODate('2026-10-05T10:32:18.000Z'),
+  Published: ISODate('2026-10-05T10:57:59.000Z'),
+  Deleted: null,
+  Edited: ISODate('2026-10-05T10:57:59.000Z'),
+  Settings: {
+    PublicLinkId: ObjectId('6ac382b7765ff358c60b6dc0')
+  },
+  VacancyLink: null,
+  ApplyLink: null,
+  IsImported: false,
+  SmartMatchesCount: null,
+  AppliesCount: null,
+  CloneCount: null,
+  ForceHighAccuracy: false,
+  MaximumSourcedCandidates: NumberInt('50'),
+  ApprovedEmailAutomation: false,
+  JobBoards: [
+    'naukri'
+  ],
+  Boosted: NumberInt('0'),
+  LeastFoundSkills: null,
+  Assessments: [],
+  SourcingJob: {
+    Status: 'Completed',
+    ErrorMessage: null
+  },
+  Candidates: null,
+  Lists: [],
+  CandidatesQuery: [
+    {
+      MaxCandidatesFactor: NumberInt('4'),
+      DeepmatchPriorityThreashold: NumberInt('40'),
+      DeepmatchEngagementThreashold: NumberInt('25'),
+      Title: [
+        'Java developer'
+      ],
+      Skills: [
+        'API',
+        'Java',
+        'REST API',
+        'Docker',
+        'Kubernetes',
+        'Microservices',
+        'SQL',
+        'NoSQL',
+        'React.js',
+        'Spring Boot',
+        'Spring MVC',
+        'Git',
+        'Jenkins',
+        'AWS',
+        'Azure',
+        'JWT',
+        'ELK',
+        'Kafka',
+        'Grafana',
+        'Prometheus',
+        'Hibernate',
+        'Stripe',
+        'Banking / Payment Gateway Integration',
+        'AWS / Azure / GCP',
+        'Payments'
+      ],
+      MandatorySkills: [],
+      Country: 'India',
+      Locations: [
+        {
+          Country: 'India',
+          City: 'Pune',
+          Radius: NumberInt('50')
+        }
+      ],
+      ExperienceRange: {
+        From: NumberInt('2'),
+        To: NumberInt('5')
+      },
+      Radius: NumberInt('50'),
+      City: 'Pune',
+      HighAccuracy: false
+    }
+  ]
+}

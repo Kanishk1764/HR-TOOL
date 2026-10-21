@@ -1,0 +1,1 @@
+from .vacancy_manager import VacancyManager, DEFAULT_JAVA_VACANCY_ID

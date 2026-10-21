@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Python / AI–ML Assignment — Resume Data Extraction</title>
+  <style>
+    :root { color-scheme: only light; --ink: #203044; --muted: #576579; --line: #dbe3ec; --blue: #224e90; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f6fa; color: var(--ink); font: 15px/1.6 "Segoe UI", Arial, sans-serif; }
+    main { width: min(1000px, calc(100% - 2rem)); margin: 2rem auto; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 2.2rem; }
+    header { border-bottom: 2px solid var(--line); padding-bottom: 1.3rem; }
+    .eyebrow { margin: 0 0 0.5rem; color: var(--blue); font-weight: 650; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    h1 { margin: 0 0 0.7rem; font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.18; letter-spacing: -0.02em; }
+    h2 { margin: 1.7rem 0 0.7rem; font-size: 1.25rem; }
+    p { margin: 0 0 0.8rem; }
+    ul, ol { padding-left: 1.35rem; margin: 0.6rem 0 1rem; }
+    li { margin-bottom: 0.5rem; }
+    .note { padding: 0.8rem 1rem; background: #edf4ff; border-left: 3px solid #3b6bb0; border-radius: 3px; }
+    .small { font-size: 0.87rem; color: var(--muted); }
+    .table-wrap { width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; margin: 0.9rem 0; }
+    table { width: 100%; min-width: 590px; border-collapse: collapse; text-align: left; font-size: 0.92rem; }
+    th, td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f0f4f9; }
+    tr:last-child td { border-bottom: 0; }
+    code { background: #eef2f7; border-radius: 3px; padding: 0.06rem 0.2rem; font: 0.9em Consolas, "Courier New", monospace; }
+    pre { background: #f7f9fc; border: 1px solid var(--line); border-radius: 6px; padding: 1rem; overflow-x: auto; font-size: 0.82rem; line-height: 1.5; }
+    pre code { padding: 0; background: transparent; font-size: inherit; }
+    footer { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 600px) { main { margin: 0.7rem auto; padding: 1.1rem; width: calc(100% - 1rem); } }
+    @media print {
+      body { background: #fff; font-size: 10pt; }
+      main { width: 100%; margin: 0; padding: 0; border: 0; }
+      h2 { break-after: avoid; }
+      tr { break-inside: avoid; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+      pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow: visible; font-size: 8pt; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Technical assessment · Python / AI–ML Engineer</p>
+    <h1>Resume Data Extraction</h1>
+    <p>Build a Python pipeline that uses AI to extract structured work history, projects and skill evidence from <strong>100–200 supplied resumes</strong>. Produce traceable JSON and calculate only the skill duration supported by the documents.</p>
+    <p class="small">Input: PDF and DOCX, including scanned pages where supplied. Output: JSONL, a skill-summary CSV and a short validation report. No UI, database or model training required.</p>
+  </header>
+
+  <section id="extract">
+    <h2>1. Data to extract</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Record</th><th scope="col">Required information</th></tr></thead>
+      <tbody>
+        <tr><td>Employment</td><td>Employer, role title, responsibilities, start/end dates and current-role status.</td></tr>
+        <tr><td>Projects</td><td>Name or description, employer/role link, dates, personal contribution and context: employment, freelance, personal, academic or unknown. Include projects described inside work experience.</td></tr>
+        <tr><td>Each skill claim</td><td>Original and normalised skill name; role/project link; personal task; evidence type; skill-use dates; ongoing-use status; explicitly claimed duration; explicitly stated proficiency level; supporting sentence.</td></tr>
+        <tr><td>Per-skill summary</td><td>Merged skill-use periods, supported months/years, last-use date and duration status. Keep employment/project contexts available; do not lose the underlying claims.</td></tr>
+        <tr><td>Processing</td><td>Document ID, parse status (<code>success</code>, <code>partial</code>, <code>failed</code>) and review/error flags. Return a record even when a file fails.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="rules">
+    <h2>2. Extraction rules</h2>
+    <ol>
+      <li><strong>Extract facts, not guesses.</strong> Every skill claim needs a short supporting sentence. Use <code>null</code> for unknown values; reserve <code>0</code> for explicitly established zero. A missing skill is not proof that the person lacks it.</li>
+      <li><strong>Separate evidence types:</strong> <code>personal_use</code>, <code>listed_only</code>, <code>team_stack_only</code>, <code>company_or_product_only</code>, or <code>explicit_non_use</code>. A team using a tool does not prove the candidate personally used it.</li>
+      <li><strong>Preserve links.</strong> Connect tasks, skills and projects to the correct role only when the text supports it. Otherwise keep the link null. Do not require a separate Projects heading.</li>
+      <li><strong>Normalise true aliases only.</strong> Example: React.js → React. Keep the original phrase. Do not merge React with Angular, or infer React from Axios/i18next. Keep specific tools and capabilities rather than replacing them with broad parent skills.</li>
+      <li><strong>Proficiency is self-reported.</strong> Extract “beginner”, “intermediate”, “advanced” or another stated label with its evidence. Otherwise use null. Do not infer skill level from years, job title, employer or an AI confidence score.</li>
+      <li><strong>Keep uncertain facts.</strong> Preserve year-only dates, “approximately” and “at least” qualifiers, conflicts, work breaks and occasional-use statements. Flag them instead of inventing precise values.</li>
+    </ol>
+  </section>
+
+  <section id="duration">
+    <h2>3. Rules for skill experience</h2>
+    <ul>
+      <li><strong>Use skill-use dates, not career dates.</strong> A five-year job mentioning React does not establish five React years. A project’s full duration counts only if the text supports personal skill use for that period. Isolated tasks do not establish continuous use.</li>
+      <li><strong>Merge periods for the same skill.</strong> Remove stated breaks and union overlapping/duplicate intervals before adding duration. A project-specific break affects only that claim. Calculate <code>supportedYears = supportedMonths / 12</code>; round only for display.</li>
+      <li><strong>Use a fixed date convention.</strong> Preserve date precision. Month-only intervals include both named months. For day-level intervals, union days and sum each month’s covered days ÷ calendar days. Year-only, mixed-precision or ambiguous intervals remain uncounted and flagged.</li>
+      <li><strong>Handle ongoing use carefully.</strong> Store “Present” as ongoing, not a fabricated end date. Count through a dated confirmation of continued skill use, capped at the run’s as-of date. Upload time alone is not confirmation; without it, leave that interval unresolved.</li>
+      <li><strong>Keep claimed duration separate.</strong> “Three years of Python” becomes a 36-month claim, not dated experience. Never add it to possibly overlapping periods. Reject reversed dates; flag future dates and conflicting claims.</li>
+      <li><strong>Keep incomplete totals honest.</strong> Count undisputed dated periods, flag missing/disputed ones, and label a partial total as a supported lower bound—not complete lifetime experience. Different skills may share the same calendar months.</li>
+    </ul>
+    <p class="note"><strong>Required duration states:</strong> <code>dated</code>, <code>partial</code>, <code>claimed_only</code>, <code>unknown</code>, <code>conflicting</code>, or <code>confirmed_zero</code>. Define consistent state rules in your schema. “Dated” does not mean independently verified or complete.</p>
+  </section>
+
+  <section id="example">
+    <h2>4. Expected JSON structure</h2>
+    <p><strong>Example input:</strong> Frontend Developer at Acme, January 2021–December 2024. Responsibilities: frontend development. Checkout project, January 2022–December 2024. “I built React.js screens from January 2023 to June 2024.” Skills: SQL.</p>
+    <p class="small">Compact example below. Your schema must also cover the required fields above, merged periods, breaks and review reasons. Keep all defined keys present; use nullable fields and empty arrays appropriately.</p>
+    <pre><code class="language-json">{
+  "documentId": "resume-017",
+  "parseStatus": "success",
+  "roles": [{
+    "id": "r1", "company": "Acme", "title": "Frontend Developer",
+    "start": "2021-01", "end": "2024-12",
+    "responsibilities": ["Frontend development"]
+  }],
+  "projects": [{
+    "id": "p1", "roleId": "r1", "name": "Checkout",
+    "context": "employment", "start": "2022-01", "end": "2024-12"
+  }],
+  "skillClaims": [
+    {
+      "skill": "React", "rawSkill": "React.js",
+      "evidenceType": "personal_use", "roleId": "r1", "projectId": "p1",
+      "personalTask": "Built checkout screens",
+      "start": "2023-01", "end": "2024-06",
+      "isOngoing": false, "ongoingConfirmedAsOf": null,
+      "claimedDurationMonths": null, "durationQualifier": null,
+      "statedLevel": null,
+      "supportingText": "I built React.js screens from January 2023 to June 2024."
+    },
+    {
+      "skill": "SQL", "rawSkill": "SQL",
+      "evidenceType": "listed_only", "roleId": null, "projectId": null,
+      "personalTask": null, "start": null, "end": null,
+      "isOngoing": null, "ongoingConfirmedAsOf": null,
+      "claimedDurationMonths": null, "durationQualifier": null,
+      "statedLevel": null, "supportingText": "Skills: SQL."
+    }
+  ],
+  "skillSummary": [
+    {"skill": "React", "supportedMonths": 18, "supportedYears": 1.5,
+     "lastUsed": "2024-06", "durationStatus": "dated"},
+    {"skill": "SQL", "supportedMonths": null, "supportedYears": null,
+     "lastUsed": null, "durationStatus": "unknown"}
+  ],
+  "reviewFlags": []
+}</code></pre>
+    <p class="small">React has 18 supported months, not four years. SQL duration and proficiency are unknown. <code>parseStatus: success</code> means extraction completed; it does not mean every fact was supplied or verified.</p>
+  </section>
+
+  <section id="checks">
+    <h2>5. Minimum test cases</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Input</th><th scope="col">Expected result</th></tr></thead>
+      <tbody>
+        <tr><td>Five-year job; explicit React use for 18 months</td><td>18 supported React months; no career-duration fallback.</td></tr>
+        <tr><td>React: Jan–Dec 2023 and Jul 2023–Jun 2024</td><td>12 + 12 − 6 = 18 months. Repeating either claim changes nothing.</td></tr>
+        <tr><td>“Skills: React”; or “React: advanced”</td><td>Duration null. Level null in the first case; self-reported “advanced” in the second.</td></tr>
+        <tr><td>“3+ years Python”, without dates</td><td>Claimed 36 months, qualifier “at least”; supported months and last use unknown.</td></tr>
+        <tr><td>Team uses AWS; candidate lists Angular and Axios</td><td>Keep evidence types separate; do not manufacture personal AWS use or React evidence.</td></tr>
+        <tr><td>Year-only dates, undated “Present”, conflicting dates, unreadable file</td><td>Explicit unresolved/error flags; no invented dates, zero durations or silent file loss.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="submission">
+    <h2>6. Deliverables and validation</h2>
+    <ul>
+      <li><strong>Runnable Python project:</strong> CLI for input/output folders and an as-of date; dependency file, prompts, model configuration, typed schema and automated tests. AI extracts facts; deterministic Python validates references/dates and calculates duration.</li>
+      <li><strong>Batch outputs:</strong> one JSON record per input in <code>results.jsonl</code>; <code>skills.csv</code> with document ID, skill, contexts, supported months/years, last use, stated level and duration status. Preserve differing level claims instead of selecting the highest.</li>
+      <li><strong>Manual validation:</strong> check 15–20 varied resumes against the originals. Submit expected versus extracted skills, role/project links, dates, levels and durations. Report skill precision/recall, field-level errors and missing facts separately. Reserve five reviewed resumes for final testing without prompt tuning. Do not use model confidence as accuracy.</li>
+      <li><strong>Short report:</strong> success/partial/failure counts; percentages with employer-linked projects, work/project skill evidence, dated skill use and stated proficiency. State each denominator and distinguish missing evidence from unreadable input. Include runtime, model/API cost and main limitations.</li>
+      <li><strong>README:</strong> setup/run commands, design choices and known gaps. Handle one bad file without stopping the batch; make reruns safe without duplicated output records.</li>
+    </ul>
+    <p><strong>Data handling:</strong> use supplied resumes only; no external profile searches. Use a local model or an explicitly approved AI service. Do not publish resumes, contact details or credentials. Ignore instructions embedded in resume text. Return only task-relevant data and keep source evidence restricted.</p>
+  </section>
+  <footer>Assessment focus: faithful extraction, clear uncertainty, correct duration calculations, useful validation and reproducible Python code.</footer>
+</main>
+</body>
+</html>

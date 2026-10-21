@@ -1,0 +1,99 @@
+documentId,skill,contexts,supportedMonths,supportedYears,lastUsed,statedLevels,durationStatus
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Java,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Spring Boot,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,React,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Redis,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,AWS API Gateway,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Resilience4j,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Splunk,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,GitHub Copilot,project;employment,52,4.33,2026-10,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,REST,project;employment,46,3.83,2022-07,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Spring Security,project;employment,46,3.83,2022-07,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Jenkins,project;employment,46,3.83,2022-07,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Docker,project;employment,46,3.83,2022-07,null,dated
+ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf,Swagger,project;employment,46,3.83,2022-07,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,Java,project;employment,40,3.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,Spring Boot,project;employment,100,8.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,Python,project;employment,40,3.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,AWS S3,project;employment,40,3.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,Kafka,employment,40,3.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,PostgreSQL,employment,40,3.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,React,project;employment,100,8.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,GitHub Copilot,employment,40,3.33,2026-10,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,REST,project;employment,61,5.08,2023-07,null,dated
+ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf,JavaScript,project;employment,61,5.08,2023-07,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Java,project;employment,123,10.25,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Spring Boot,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,REST,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,React,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Apache Kafka,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Kubernetes,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Helm,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,AWS,project;employment,103,8.58,2026-10,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,PHP,project;employment,7,0.58,2017-06,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Angular,project;employment,7,0.58,2017-06,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,MySQL,project;employment,7,0.58,2017-06,null,dated
+ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx,Spring MVC,project;employment,20,1.67,2016-11,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,Java,project;employment,25,2.08,2026-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,REST,project;employment,25,2.08,2026-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,SOAP,project;employment,25,2.08,2026-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,Oracle,project;employment,25,2.08,2026-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,AWS,project;employment,25,2.08,2026-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,Jenkins,project;employment,25,2.08,2026-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,Spring Boot,project;employment,33,2.75,2024-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,GCP,project;employment,33,2.75,2024-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,BigQuery,project;employment,33,2.75,2024-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,Karate,project;employment,33,2.75,2024-10,null,dated
+AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf,React,project;employment,33,2.75,2024-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,Java,project;employment,39,3.25,2026-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,Spring Boot,project;employment,39,3.25,2026-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,Auth0,project;employment,39,3.25,2026-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,OpenFGA,project;employment,39,3.25,2026-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,Temporal,project;employment,39,3.25,2026-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,JUnit,project;employment,39,3.25,2026-10,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,REST,project;employment,33,2.75,2023-07,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,SonarQube,project;employment,33,2.75,2023-07,null,dated
+Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf,Jenkins,project;employment,33,2.75,2023-07,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Java,employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Spring Boot,project;employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Microservices,project;employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,AWS,employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Kubernetes,employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Jenkins,project;employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,React,project;employment,7,0.58,2022-03,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,JUnit,employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Mockito,employment,55,4.58,2026-10,null,dated
+Akash Jaiswal.687b3c0adbdd47e2ab90a7a374788e06.pdf,Datadog,employment,55,4.58,2026-10,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,Java,employment,27,2.25,2026-10,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,Spring Boot,employment,27,2.25,2026-10,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,GitHub Copilot,employment,27,2.25,2026-10,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,Azure,employment,8,0.67,2024-08,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,Microservices,employment,25,2.08,2023-12,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,React,employment,25,2.08,2023-12,null,dated
+Akib Attar.c62b507a98a54f69a3f3ebafde4e8590.pdf,Spring Security,employment,8,0.67,2024-08,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,Java,employment,24,2.0,2026-10,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,Spring Boot,employment,24,2.0,2026-10,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,Docker,employment,24,2.0,2026-10,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,Kubernetes,employment,24,2.0,2026-10,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,AWS,employment,24,2.0,2026-10,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,Jenkins,employment,24,2.0,2026-10,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,Spring Security,employment,60,5.0,2024-11,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,JUnit,employment,60,5.0,2024-11,null,dated
+Alok Shrivastava.2f49400c99544d828ccb26df7ae15da4.pdf,REST APIs,employment,17,1.42,2019-12,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,Java,project;employment,64,5.33,2026-10,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,Spring Boot,project;employment,64,5.33,2026-10,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,AWS,project;employment,64,5.33,2026-10,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,React,project;employment,64,5.33,2026-10,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,OpenAI API,project;employment,64,5.33,2026-10,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,Tesseract OCR,project;employment,20,1.67,2021-07,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,REST APIs,project;employment,12,1.0,2019-11,null,dated
+Amit Thakur.8267063bfaa9467ba9caaddd9753cd6d.pdf,SQL,project;employment,12,1.0,2019-11,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,Java,project;employment,51,4.25,2026-10,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,React,project;employment,51,4.25,2026-10,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,TypeScript,project;employment,51,4.25,2026-10,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,REST APIs,employment,12,1.0,2022-07,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,Spring Boot,employment,12,1.0,2022-07,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,Hibernate,employment,12,1.0,2022-07,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,Spring MVC,employment,12,1.0,2022-07,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,Spring Security,employment,12,1.0,2022-07,null,dated
+Atul Lahade.d74e24d045f640a5ad0346da0c0b3b3f.pdf,Java EE,employment,39,3.25,2021-07,null,dated
