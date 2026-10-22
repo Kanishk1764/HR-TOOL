@@ -1,4 +1,4 @@
-# Enterprise AI Architecture: Evaluation, Prompt Engineering, & Observability Playbook
+﻿# Enterprise AI Architecture: Evaluation, Prompt Engineering, & Observability Playbook
 
 ---
 
@@ -37,14 +37,14 @@ To understand why an AI output is wrong, we divide checks into four plain-sense 
 Enterprise AI companies never rely on manual testers or end users to discover bugs. They run a continuous evaluation system with four complementary testing approaches:
 
 ```
-Raw Data ──► [Pipeline] ──► Output
-                │              │
-                ▼              ▼
+Raw Data â”€â”€â–º [Pipeline] â”€â”€â–º Output
+                â”‚              â”‚
+                â–¼              â–¼
      [Tracing & Telemetry]   [Offline & Online Eval Suite]
-             (Logs)           ├── 1. Deterministic Contract Tests
-                              ├── 2. Golden Benchmark Dataset
-                              ├── 3. LLM-as-a-Judge
-                              └── 4. Production Canary / Shadow Routing
+             (Logs)           â”œâ”€â”€ 1. Deterministic Contract Tests
+                              â”œâ”€â”€ 2. Golden Benchmark Dataset
+                              â”œâ”€â”€ 3. LLM-as-a-Judge
+                              â””â”€â”€ 4. Production Canary / Shadow Routing
 ```
 
 * **Deterministic Contract Tests:** Simple code rules that instantly check if dates are valid, numbers make sense, and required fields exist without needing an AI call.
@@ -77,99 +77,3 @@ Whenever an engineer updates a prompt or upgrades a model, an automated test run
 
 ---
 
-## 4. The 6-Step Engineering Loop to Fix & Optimize Prompts
-
-When an AI prompt underperforms, scalable engineering follows a structured, scientific improvement loop:
-
-```
-[1. Error Taxonomy] ──► [2. Baseline Score] ──► [3. Prompt Refactoring]
-                                                        │
-[6. Guardrail Fallback] ◄── [5. A/B Regression Delta] ◄── [4. Scratchpad/CoT]
-```
-
-### Step 1: Create an Error Taxonomy (Name the Exact Failure)
-Classify the exact failure before editing any text:
-* **Entity Recall Drop:** Model skipped technologies inside sentences.
-* **Context Over-Filtering:** Prompt was too strict with verbatim words, dropping implied skills like Java.
-* **Temporal Confusion:** Model left dates null on child projects.
-
-### Step 2: Freeze a Prompt Eval Test Set (5 to 10 Hard Cases)
-Run the current prompt against 5 to 10 difficult resumes and calculate the initial baseline score:
-Baseline Recall equals Correct Skills Extracted divided by Total Skills Present in Text.
-
-### Step 3: Refactor the Prompt Structure (The Production Blueprint)
-A production prompt must have clear sections:
-1. **Role & Objective:** Explicit statement of the extraction goal.
-2. **Definitions:** Clear definition of what counts as a skill or claim.
-3. **Extraction Policies:** Explicit instructions to extract every mentioned technology without skipping, to infer base languages when frameworks are used, and to inherit dates for nested projects.
-4. **Few-Shot Examples:** One or two concrete examples showing raw input text and the ideal structured result.
-5. **Output Format:** Strict definition of the required format.
-
-### Step 4: Add a Scratchpad or Pre-Thinking Directive
-Instruct the model to first write down a rough list of all detected tools, check for missing items, and verify parent languages in a temporary thinking section before it outputs the final structured data. Because language models generate words step-by-step, forcing them to review the facts first helps them remember all details when producing the final response.
-
-### Step 5: Run A/B Delta Evaluation
-Run the updated prompt on the exact same test files and compare the numbers side-by-side:
-
-| Metric | Current Prompt | Updated Prompt | Result |
-| :--- | :--- | :--- | :--- |
-| **Abhijit Skills Extracted** | 9 skills | 17 skills (Hibernate, JPA, SQL included) | +88% Recall |
-| **Java Experience Duration** | 4.33 years | 8.0 years (Capgemini credited) | Fixed |
-| **Project 3 Dates** | null | 2018-10 to 2022-07 | Fixed |
-| **Format Errors** | 3 errors | 0 errors | Passed |
-
-### Step 6: Decide Prompt Tasks vs Deterministic Code Tasks
-* **Let the Prompt do:** Reading language, identifying tools, and matching sentences.
-* **Let Code do:** Calculating month durations, filling missing project dates from the main job dates, and checking formatting rules.
-
----
-
-## 5. Architectural Redesign: The 3-Stage Pipeline
-
-Instead of asking a single prompt to do everything at once, robust systems divide the work into three dedicated steps:
-
-```
-[Raw PDF Text]
-      │
-      ▼
-┌──────────────────────────────────────────────┐
-│ Stage 1: Structural Chunking & Role Tagger   │  <── Extracts Timeline & Section Graph
-└──────────────────────────────────────────────┘
-      │
-      ▼
-┌──────────────────────────────────────────────┐
-│ Stage 2: Parallel Deep Entity Extraction     │  <── Extracts ALL skills per bullet
-└──────────────────────────────────────────────┘
-      │
-      ▼
-┌──────────────────────────────────────────────┐
-│ Stage 3: Deterministic Ontology Enrichment   │  <── Python Logic (Zero Tokens)
-│          & Parent-Child Date Propagation     │      Inherits dates & parent skills
-└──────────────────────────────────────────────┘
-      │
-      ▼
-[Final Verified JSON]
-```
-
-1. **Stage 1 (Structure):** Identifies company names, job titles, and calendar boundaries.
-2. **Stage 2 (Entity Extraction):** Reads each bullet point and extracts every mentioned framework and tool.
-3. **Stage 3 (Deterministic Code Enrichment):** Standard Python code automatically passes the job's dates down to any undated sub-projects and adds parent languages (such as linking Java whenever Spring Boot is found) at zero token cost.
-
----
-
-## 6. Observability, Tracing, & Debugging
-
-When building any data processing pipeline with AI, you need full visibility into what happened behind the scenes whenever an output looks wrong.
-
-### How to Track and Log LLM Operations
-Every time your application calls an AI model, your system should automatically record three pieces of information into a log file or database:
-1. **The Exact Input:** The complete prompt, system instructions, and raw document text sent to the model.
-2. **The Model's Reasoning Steps:** When using reasoning-capable models, capture the internal thinking steps or intermediate scratchpad notes where the model analyzed the problem.
-3. **The Raw Output:** The exact text and structure returned by the model before any cleanup was performed.
-
-By saving these records with a unique tracking identifier for every request, you never have to guess why a skill was missed. You can simply look up the log, read the model's intermediate thoughts, and immediately see whether the issue was caused by poor document text, an incomplete prompt instruction, or a parsing mistake.
-
-### Tooling Options
-* **Local JSONL or Database Logs:** A simple, self-contained solution where your own backend code appends each request, input, thinking step, and output directly into local log files or a database table. It has zero external dependencies and zero added cost.
-* **Langfuse / Arize Phoenix:** Popular open-source platforms that you can host on your own servers. They provide a visual web dashboard where team members can search requests, view full conversation histories, inspect latency, and monitor error rates.
-* **LangSmith / Helicone:** Managed cloud platforms designed for enterprise teams that provide automated logging, cost tracking, token usage alerts, and visual comparison tools for prompt updates.
