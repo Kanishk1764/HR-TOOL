@@ -161,11 +161,33 @@ def calculate_skill_intervals(
         total_years = round(total_months / 12.0, 2) if total_months is not None else None
         last_used = int_to_month(last_used_idx) if last_used_idx is not None else None
 
+        # Compute elapsed months across contiguous segments
+        elapsed_months: Optional[int] = None
+        if covered_months:
+            sorted_m = sorted(list(covered_months))
+            segments = 1
+            for i in range(1, len(sorted_m)):
+                if sorted_m[i] != sorted_m[i - 1] + 1:
+                    segments += 1
+            elapsed_months = max(0, len(sorted_m) - segments)
+
+        # Determine overall durationBasis for the canonical skill
+        bases = {getattr(c, "durationBasis", None) or "proven" for c in group}
+        if "proven" in bases:
+            duration_basis = "proven"
+        elif "role_inherited" in bases:
+            duration_basis = "role_inherited"
+        elif "hierarchy_inferred" in bases:
+            duration_basis = "hierarchy_inferred"
+        else:
+            duration_basis = "proven"
+
         # Determine durationStatus strictly per Section 3
         if has_non_use and not covered_months:
             duration_status: DurationStatus = "confirmed_zero"
             total_months = 0
             total_years = 0.0
+            elapsed_months = 0
         elif has_conflicts:
             duration_status = "conflicting"
         elif total_months is not None and total_months > 0:
@@ -181,7 +203,10 @@ def calculate_skill_intervals(
         summaries[canonical_name] = SkillSummary(
             skill=canonical_name,
             supportedMonths=total_months,
+            elapsedMonths=elapsed_months,
+            countingConvention="inclusive_calendar_months",
             supportedYears=total_years,
+            durationBasis=duration_basis,
             lastUsed=last_used,
             durationStatus=duration_status,
             contexts=list(contexts),

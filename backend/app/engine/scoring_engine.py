@@ -104,19 +104,21 @@ def match_candidate_to_vacancy(
     required_domain = vacancy_info.get("requiredDomainSkills", ["Payment Gateway", "Razorpay", "Stripe", "Checkout"])
     required_infra = vacancy_info.get("requiredInfraSkills", ["Docker", "Kubernetes", "CI/CD"])
 
-    # Java experience check
-    java_summary = candidate_skills.get("java")
-    java_years = java_summary.supportedYears if java_summary and java_summary.supportedYears else 0.0
+    # Dynamic primary core competency experience check (Universal for any vacancy: Java, IT Support, DevOps, etc.)
+    primary_skill = vacancy_info.get("primaryCoreSkill") or (required_core[0] if required_core else "Core Skill")
+    core_summary = candidate_skills.get(primary_skill.lower())
+    core_years = core_summary.supportedYears if core_summary and core_summary.supportedYears else 0.0
     
-    # If Java has only claimed months (claimed_only)
-    if java_years == 0.0 and java_summary and java_summary.durationStatus == "claimed_only":
+    # If primary skill has only claimed months (claimed_only)
+    if core_years == 0.0 and core_summary and core_summary.durationStatus == "claimed_only":
         for c in claims:
-            if c.skill.lower() == "java" and c.claimedDurationMonths:
-                java_years = round(c.claimedDurationMonths / 12.0, 1)
+            if c.skill.lower() == primary_skill.lower() and c.claimedDurationMonths:
+                core_years = round(c.claimedDurationMonths / 12.0, 1)
                 break
 
     min_required_exp = vacancy_info.get("experienceMinYears", 5.0)
-    meets_java = (java_years >= min_required_exp)
+    # Allow standard 3-month (0.25-0.3 yr) ATS rounding tolerance for senior roles
+    meets_core = (core_years >= min_required_exp or (min_required_exp - core_years) <= 0.3)
 
     matched_direct: List[str] = []
     missing_critical: List[str] = []
@@ -161,8 +163,8 @@ def match_candidate_to_vacancy(
             matched_direct.append(skill)
 
     # Calculate Direct Match Score (0 - 100)
-    # Weighting: 40% Java Experience, 30% Core stack, 20% Domain, 10% Infra
-    exp_score = min(1.0, java_years / min_required_exp) * 40.0
+    # Weighting: 40% Core Experience, 30% Core stack, 20% Domain, 10% Infra
+    exp_score = min(1.0, core_years / min_required_exp) * 40.0
     core_score = (len([s for s in matched_direct if not s.endswith("(listed)")]) / max(1, len(required_core))) * 30.0
     domain_score = 20.0 if has_domain else 0.0
     infra_score = 10.0 if any(s.lower() in candidate_skills for s in ["docker", "kubernetes", "ci/cd"]) else 0.0
@@ -178,24 +180,24 @@ def match_candidate_to_vacancy(
 
     # Determine Verdict
     notes: List[str] = []
-    if direct_score >= 75 and meets_java:
+    if direct_score >= 75 and meets_core:
         verdict = "Strong Fit"
-        notes.append("Candidate meets the 5+ years Java requirement with strong backend stack coverage.")
+        notes.append(f"Candidate meets the {min_required_exp}+ years {primary_skill} requirement with strong stack coverage.")
     elif transferable_score >= 70:
         verdict = "Transferable Fit"
         notes.append("Candidate has strong adjacent skills that transfer well via the Knowledge Graph.")
-    elif java_years > 0 and java_years < min_required_exp:
+    elif core_years > 0 and core_years < min_required_exp:
         verdict = "Junior/Mid Fit"
-        notes.append(f"Candidate has {java_years} supported Java years (role requires {min_required_exp}+ years).")
+        notes.append(f"Candidate has {core_years} supported {primary_skill} years (role requires {min_required_exp}+ years).")
     else:
         verdict = "Low Fit"
-        notes.append("Missing core Java backend and payment gateway prerequisites.")
+        notes.append(f"Missing core {primary_skill} prerequisites.")
 
     return VacancyMatch(
         directMatchScore=direct_score,
         transferableScore=transferable_score,
-        supportedJavaYears=java_years,
-        meetsJavaExperience=meets_java,
+        supportedJavaYears=core_years,
+        meetsJavaExperience=meets_core,
         matchedDirectSkills=matched_direct,
         matchedProxySkills=matched_proxies,
         missingCriticalSkills=missing_critical,

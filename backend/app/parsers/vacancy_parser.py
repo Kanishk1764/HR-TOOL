@@ -43,7 +43,16 @@ def parse_vacancy_file(file_path: str) -> Dict[str, Any]:
         "title": title,
         "experienceMinYears": min_exp,
         "experienceMaxYears": max_exp,
-        "location": "Pune (Baner) – Work from Office",
+        "primaryCoreSkill": "Java",
+        "skillHierarchy": {
+            "spring boot": "Java",
+            "spring cloud": "Java",
+            "spring mvc": "Java",
+            "spring security": "Java",
+            "hibernate": "Java",
+            "hibernate/jpa": "Java",
+            "jpa": "Java"
+        },
         "requiredCoreSkills": ["Java", "Spring Boot", "Spring MVC", "Hibernate/JPA", "Microservices", "REST API", "SQL"],
         "requiredDomainSkills": ["Payment Gateway", "Razorpay", "Stripe", "Checkout", "Adyen", "PayU"],
         "requiredInfraSkills": ["Docker", "Kubernetes", "CI/CD", "Jenkins", "Git"],

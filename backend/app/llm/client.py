@@ -77,16 +77,22 @@ class LLMExtractorClient:
                 if isinstance(parsed, list):
                     return parsed
                 elif isinstance(parsed, dict):
-                    # Check if dict maps doc_id -> doc_object
+                    # Case 1: Single-document response — dict has roles/skillClaims at top level
+                    DOCUMENT_KEYS = {"roles", "skillClaims", "skills", "experience"}
+                    if any(key in parsed for key in DOCUMENT_KEYS):
+                        return [parsed]
+
+                    # Case 2: Dict maps doc_id -> doc_object (multi-doc keyed response)
                     doc_list = []
                     for k, v in parsed.items():
-                        if isinstance(v, dict) and any(key in v for key in ["roles", "skillClaims", "skills", "experience"]):
+                        if isinstance(v, dict) and any(key in v for key in DOCUMENT_KEYS):
                             if "documentId" not in v:
                                 v["documentId"] = k
                             doc_list.append(v)
                     if doc_list:
                         return doc_list
 
+                    # Case 3: Dict has a single key wrapping a list of docs
                     for v in parsed.values():
                         if isinstance(v, list) and v and isinstance(v[0], dict):
                             return v
