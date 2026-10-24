@@ -6,11 +6,12 @@ from typing import List, Dict, Any, Optional
 from ..parsers.pdf_parser import extract_pdf_layout_aware
 from ..parsers.docx_parser import extract_docx
 from ..parsers.vacancy_parser import parse_vacancy_file
-from ..models.schemas import ResumeResult, Role, Project, SkillClaim
+from ..models.schemas import ResumeResult, Role, Project, SkillClaim, SkillSummary, SelectionInsights, VacancyMatch
 from ..engine.interval_engine import calculate_skill_intervals
 from ..engine.quote_verifier import verify_claims_against_source
 from ..engine.knowledge_graph import KnowledgeGraphEngine
 from ..engine.scoring_engine import compute_selection_insights, match_candidate_to_vacancy
+from ..engine.enrichment_engine import enrich_candidate_record
 from .client import LLMExtractorClient
 
 RESUMES_DIR = os.path.join(
@@ -149,25 +150,31 @@ class BatchProcessingPipeline:
 
                     candidate_name = raw_data.get("candidateName") or os.path.splitext(doc_id)[0].split(".")[0]
 
-                    # Convert roles
+                    # Convert roles and projects
                     roles = [Role(**r) for r in raw_data.get("roles", [])]
                     projects = [Project(**p) for p in raw_data.get("projects", [])]
-
-                    # Convert skill claims
                     raw_claims = [SkillClaim(**c) for c in raw_data.get("skillClaims", [])]
 
-                    # Catch 3: Exact-quote verification against raw source (prompt injection / keyword stuffing defense)
+                    # Catch 3: Exact-quote verification against raw source
                     verified_claims, quote_flags = verify_claims_against_source(raw_claims, raw_text)
                     flags.extend(quote_flags)
 
-                    # Catch 2 & 4: Deterministic Interval Union Calculation
-                    summaries = calculate_skill_intervals(verified_claims, as_of_date=as_of_date, roles=roles)
+                    # Stage 3: Deterministic Architectural Enrichment (Method 1: Dynamic Vacancy Hierarchy + Date Propagation)
+                    enriched_dict = enrich_candidate_record(
+                        {
+                            "roles": [r.model_dump() for r in roles],
+                            "projects": [p.model_dump() for p in projects],
+                            "skillClaims": [c.model_dump() for c in verified_claims]
+                        },
+                        vacancy_info=self.vacancy_info
+                    )
 
-                    # Selection Insights (tenure stability, recency, velocity)
-                    insights = compute_selection_insights(roles, verified_claims, summaries)
-
-                    # Vacancy Matching & Knowledge Graph Evaluation
-                    match = match_candidate_to_vacancy(summaries, verified_claims, self.vacancy_info, self.kg_engine)
+                    roles = [Role(**r) for r in enriched_dict["roles"]]
+                    projects = [Project(**p) for p in enriched_dict["projects"]]
+                    final_claims = [SkillClaim(**c) for c in enriched_dict["skillClaims"]]
+                    summaries = {s["skill"]: SkillSummary(**s) for s in enriched_dict["skillSummary"]}
+                    insights = SelectionInsights(**enriched_dict["selectionInsights"])
+                    match = VacancyMatch(**enriched_dict["vacancyMatch"])
 
                     parse_status = "success"
                     if any("quote_verification_failed" in f for f in flags) or not verified_claims:
@@ -179,7 +186,7 @@ class BatchProcessingPipeline:
                         parseStatus=parse_status,
                         roles=roles,
                         projects=projects,
-                        skillClaims=verified_claims,
+                        skillClaims=final_claims,
                         skillSummary=list(summaries.values()),
                         reviewFlags=flags,
                         selectionInsights=insights,

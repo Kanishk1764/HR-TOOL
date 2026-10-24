@@ -68,12 +68,16 @@ class SkillClaim(BaseModel):
     statedLevel: Optional[str] = None  # "beginner", "intermediate", "advanced" or null
     supportingText: Optional[str] = ""
     isQuoteVerified: bool = False
+    durationBasis: Optional[str] = "proven"  # "proven", "role_inherited", "hierarchy_inferred"
 
 
 class SkillSummary(BaseModel):
     skill: str
     supportedMonths: Optional[int] = None
+    elapsedMonths: Optional[int] = None
+    countingConvention: str = "inclusive_calendar_months"
     supportedYears: Optional[float] = None
+    durationBasis: Optional[str] = "proven"  # "proven", "role_inherited", "hierarchy_inferred"
     lastUsed: Optional[str] = None
     durationStatus: DurationStatus
     contexts: List[str] = Field(default_factory=list)

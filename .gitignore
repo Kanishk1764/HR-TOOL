@@ -37,3 +37,20 @@ yarn-error.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Resume Binaries & Heavy Assets
+assests/
+Kanishk*/
+
+# Checkpoints & Debug Traces
+batch_outputs/checkpoint_results*.jsonl
+batch_outputs/stage_traces/
+batch_outputs1/
+
+# Scratch & Temporary Test Scripts
+test_*.py
+test_*.ps1
+check_ocr_langs.ps1
+extract_kanishk_resumes.py
+reprocess_kanishk_improved.py
+

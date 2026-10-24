@@ -1,0 +1,132 @@
+[
+  {
+    "candidateName": "ABHIJIT CHAUDHARI",
+    "documentId": "ABHIJIT CHAUDHARI.eb6d7560dc664dfe93ebc4b7340f25c7.pdf",
+    "expectedMinJavaYears": 5.0,
+    "trueCareerSpanYears": 8.0,
+    "expectedMeetsVacancy": true,
+    "roles": [
+      {
+        "id": "r1",
+        "company": "Cognizant",
+        "title": "Senior Software Engineer",
+        "start": "2022-07",
+        "end": null,
+        "isCurrent": true
+      },
+      {
+        "id": "r2",
+        "company": "Capgemini",
+        "title": "Senior Software Developer",
+        "start": "2018-10",
+        "end": "2022-07",
+        "isCurrent": false
+      }
+    ],
+    "groundTruthSkills": [
+      "Java", "Spring Boot", "Spring Cloud", "Hibernate", "JPA", "Microservices",
+      "REST API", "SQL", "Redis", "AWS API Gateway", "Resilience4j", "Splunk",
+      "Docker", "Jenkins", "Swagger", "Spring Security", "React"
+    ],
+    "expectedProjectCount": 3
+  },
+  {
+    "candidateName": "ABHIRA RAMTEKE",
+    "documentId": "ABHIRA RAMTEKE.a0cefd84e88142259296b92b27b7f6a4.pdf",
+    "expectedMinJavaYears": 5.0,
+    "trueCareerSpanYears": 8.25,
+    "expectedMeetsVacancy": true,
+    "roles": [
+      {
+        "id": "r1",
+        "company": "LTIMindtree",
+        "title": "Senior Software Engineer",
+        "start": "2023-07",
+        "end": null,
+        "isCurrent": true
+      },
+      {
+        "id": "r2",
+        "company": "Cognizant",
+        "title": "Programmer Analyst",
+        "start": "2018-07",
+        "end": "2023-07",
+        "isCurrent": false
+      }
+    ],
+    "groundTruthSkills": [
+      "Java", "Spring Boot", "Spring MVC", "Hibernate", "Microservices",
+      "REST API", "SQL", "Kafka", "PostgreSQL", "AWS S3", "React",
+      "JavaScript", "Docker", "MySQL"
+    ],
+    "expectedProjectCount": 4
+  },
+  {
+    "candidateName": "ATUL ANANT GAWAS",
+    "documentId": "ATUL ANANT GAWAS.9bc4f3b14d954977ad2a6e9a79718186.docx",
+    "expectedMinJavaYears": 5.0,
+    "trueCareerSpanYears": 11.0,
+    "expectedMeetsVacancy": true,
+    "roles": [
+      {
+        "id": "r1",
+        "company": "Qualys Inc.",
+        "title": "Senior Software Engineer",
+        "start": "2018-04",
+        "end": null,
+        "isCurrent": true
+      }
+    ],
+    "groundTruthSkills": [
+      "Java", "Spring Boot", "Spring MVC", "Spring Security", "JPA", "Hibernate",
+      "Microservices", "REST API", "SQL", "Apache Kafka", "Kubernetes", "Helm",
+      "AWS", "Docker", "React", "Oracle", "PostgreSQL"
+    ],
+    "expectedProjectCount": 2
+  },
+  {
+    "candidateName": "AYUSH TAMRAKAR",
+    "documentId": "AYUSH TAMRAKAR.3f2f0854e7af42ed866061297e4d7e35.pdf",
+    "expectedMinJavaYears": 5.0,
+    "trueCareerSpanYears": 5.0,
+    "expectedMeetsVacancy": true,
+    "roles": [
+      {
+        "id": "r1",
+        "company": "IBM India Pvt Ltd",
+        "title": "Cloud Fullstack Developer",
+        "start": "2024-10",
+        "end": null,
+        "isCurrent": true
+      }
+    ],
+    "groundTruthSkills": [
+      "Java", "Spring Boot", "Spring MVC", "Spring Security", "Microservices",
+      "REST API", "SOAP", "JPA", "Hibernate", "Oracle", "SQL", "AWS", "GCP",
+      "Jenkins", "Payment Gateway"
+    ],
+    "expectedProjectCount": 2
+  },
+  {
+    "candidateName": "AANSHI MEHTA",
+    "documentId": "Aanshi Mehta.be2b7d1acbb24fa78fb94fb5553ea403.pdf",
+    "expectedMinJavaYears": 5.0,
+    "trueCareerSpanYears": 5.25,
+    "expectedMeetsVacancy": true,
+    "roles": [
+      {
+        "id": "r1",
+        "company": "TripleLift",
+        "title": "Senior Software Engineer",
+        "start": "2023-08",
+        "end": null,
+        "isCurrent": true
+      }
+    ],
+    "groundTruthSkills": [
+      "Java", "Spring Boot", "Microservices", "REST API", "Kafka",
+      "OpenFGA", "Auth0", "Temporal", "AWS", "Kubernetes", "JUnit", "SQL"
+    ],
+    "expectedProjectCount": 2
+  }
+]
